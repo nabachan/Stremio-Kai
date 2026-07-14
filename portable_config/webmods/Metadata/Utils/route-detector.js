@@ -52,12 +52,14 @@
 
       // 1. Player - extract IMDb ID and anime IDs from URL
       // Format: /series/mal%3A11061/tt2098220%3A1%3A2 or /movie/tt1234567/
+      // Phase 3: also /series/kai%3Asolo-leveling/kai%3Asolo-leveling
       if (RouteDetector.ROUTES.PLAYER.test(hash)) {
         const decoded = decodeURIComponent(hash);
 
         // Extract IMDb ID (always at end of player URL in format tt1234567:season:episode or just tt1234567)
         const imdbMatch = decoded.match(/\/(tt\d+)(?::\d+:\d+)?(?:\/|$)/);
-        const imdbId = imdbMatch ? imdbMatch[1] : null;
+        const kaiMatch = decoded.match(/\/(kai:[^\/]+)/);
+        const imdbId = imdbMatch ? imdbMatch[1] : kaiMatch ? kaiMatch[1] : null;
 
         // Extract content type
         const typeMatch = decoded.match(/\/(movie|series)\//);
@@ -81,7 +83,7 @@
           view: "PLAYER",
           id: imdbId,
           type: type,
-          source: animeIds ? "anime" : "imdb",
+          source: kaiMatch ? "kai" : animeIds ? "anime" : "imdb",
           animeIds: animeIds, // New: { mal, anilist, kitsu } or null
         };
         RouteDetector._cache = { hash, state };
@@ -162,6 +164,9 @@
       } else if (idString.startsWith("anidb:")) {
         id = idString.replace("anidb:", "");
         source = "anidb";
+      } else if (idString.startsWith("kai:")) {
+        id = idString; // keep full kai:slug for MediaProvider lookups
+        source = "kai";
       }
 
       return { id, source };

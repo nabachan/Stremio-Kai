@@ -88,3 +88,14 @@ MEDIA_PROVIDERS=fake,nyaa,piratebay npm start
 - `mpv.scriptMessages`: same `profile_manager` / `anime-metadata` shape used by `mpv-bridge.js`
 
 Fake streams use **Big Buck Bunny / Sintel / Tears of Steel** magnets so you can validate the bridge with legal open movies while catalog posters show intense anime titles for UI calibration.
+
+## Phase 3 player wiring
+
+`portable_config/webmods/Utilities/player-handoff-bridge.js` listens for catalog Play and:
+
+1. Reuses Stremio stream shape `{ infoHash, sources, fileIdx }`
+2. `POST http://127.0.0.1:11470/{infoHash}/create` (EngineFS — same as stock Kai)
+3. `mpv-command` / `loadfile` on the progressive HTTP URL via WebView transport
+4. Sends `anime-metadata` to `profile_manager` — **SVP / Anime4K Lua untouched**
+
+One-click: `start-kai.bat` (MediaProvider + preview + stremio.exe if found).

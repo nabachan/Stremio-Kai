@@ -389,31 +389,49 @@
 
   async function handlePlay(contentId, index) {
     const handoffEl = state.root?.querySelector('[data-role="handoff"]');
+    const setHandoffText = (obj) => {
+      if (!handoffEl) return;
+      handoffEl.hidden = false;
+      handoffEl.textContent =
+        typeof obj === "string" ? obj : JSON.stringify(obj, null, 2);
+    };
+
     try {
       const handoff = await api().play(contentId, { index });
-      if (handoffEl) {
-        handoffEl.hidden = false;
-        handoffEl.textContent = JSON.stringify(
-          {
-            kind: handoff.kind,
-            uri: handoff.uri,
-            infoHash: handoff.stream?.infoHash,
-            note: "Phase 2 preview — Phase 3 wires this into the MPV/SVP transport",
-          },
-          null,
-          2,
+      setHandoffText({
+        status: "resolving…",
+        kind: handoff.kind,
+        uri: handoff.uri,
+        infoHash: handoff.stream?.infoHash,
+      });
+
+      // Phase 3: prefer direct bridge call (event listener is the fallback)
+      if (window.KaiPlayerHandoff?.play) {
+        const result = await window.KaiPlayerHandoff.play(handoff);
+        setHandoffText({
+          status: result.resolved?.playableUrl ? "playing" : "waiting-streaming-server",
+          kind: handoff.kind,
+          mode: result.resolved?.mode,
+          playableUrl: result.resolved?.playableUrl,
+          webview: !!window.chrome?.webview,
+          detail: result.resolved?.detail || result.lastError || null,
+          note: "SVP/Anime4K receive anime-metadata via existing profile_manager path",
+        });
+      } else {
+        window.dispatchEvent(
+          new CustomEvent("kai-player-handoff", { detail: handoff }),
         );
+        setHandoffText({
+          status: "event-dispatched",
+          kind: handoff.kind,
+          uri: handoff.uri,
+          infoHash: handoff.stream?.infoHash,
+          note: "KaiPlayerHandoff bridge not loaded yet — event queued",
+        });
       }
-      // Soft bridge preview: expose for Phase 3
-      window.dispatchEvent(
-        new CustomEvent("kai-player-handoff", { detail: handoff }),
-      );
       console.log("[KaiAnimeCatalog] handoff", handoff);
     } catch (err) {
-      if (handoffEl) {
-        handoffEl.hidden = false;
-        handoffEl.textContent = String(err.message || err);
-      }
+      setHandoffText(String(err.message || err));
     }
   }
 
