@@ -1,0 +1,9 @@
+# stremio-web ignored artifacts
+node_modules/
+build/
+dist/
+.cache/
+*.log
+.DS_Store
+.env
+.env.*

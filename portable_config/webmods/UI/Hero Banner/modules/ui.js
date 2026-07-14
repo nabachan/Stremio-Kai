@@ -693,7 +693,8 @@ window.HeroPlugin.UI = {
   },
 
   shouldShowHero() {
-    // Simple heuristic: Are we on the Board tab/page?
+    // Phase 2: Kai anime catalog owns the board home surface
+    if (window.KaiAnimeCatalog?.initialized) return false;
     return this.isBoardTabSelected() && this.isBoardPage();
   },
 
