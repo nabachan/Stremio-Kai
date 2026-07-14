@@ -6,17 +6,48 @@ The MPV / SVP / Anime4K stack in `portable_config/` is **untouched**. This layer
 
 ## One-click run
 
+### Windows (recommandé)
+
+1. Clone / ouvre le dépôt **Stremio-Kai** (pas `C:\Users\iland`)
+2. Checkout la branche Phase 1
+3. Double-clique `start-media-provider.bat` à la **racine du repo**
+
+```bat
+git clone https://github.com/nabachan/Stremio-Kai.git
+cd Stremio-Kai
+git fetch origin
+git checkout cursor/media-provider-manager-2868
+start-media-provider.bat
+```
+
+Ou depuis un `cmd` déjà dans le repo :
+
+```bat
+cd media-provider
+scripts\start.bat
+```
+
+> `./scripts/start.sh` est pour Linux/macOS — **ne marche pas** sous cmd.exe Windows.
+
+### Linux / macOS
+
 ```bash
 cd media-provider
-./scripts/start.sh          # Linux / macOS
-# or: scripts\start.bat     # Windows
+./scripts/start.sh
 ```
 
 Server listens on `http://127.0.0.1:8765`.
 
 ## Smoke test (no network scrapers needed)
 
+```bat
+REM Windows — depuis la racine du repo
+cd media-provider
+test.bat
+```
+
 ```bash
+# Linux / macOS
 cd media-provider
 npm install
 npm test
