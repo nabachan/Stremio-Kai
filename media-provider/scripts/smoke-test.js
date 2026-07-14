@@ -13,7 +13,7 @@ async function main() {
   const manifest = mgr.getManifest();
   assert.equal(manifest.id, "community.kai.media-provider");
   assert.ok(manifest.catalogs.length >= 3, "expected anime catalogs");
-  assert.ok(manifest.types.includes("anime"));
+  assert.ok(manifest.types.includes("series"));
 
   const featured = mgr.getCatalog("anime-featured");
   assert.ok(featured.metas.length >= 3, "featured catalog empty");

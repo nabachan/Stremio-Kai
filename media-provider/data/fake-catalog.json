@@ -2,19 +2,19 @@
   "catalogs": [
     {
       "id": "anime-featured",
-      "type": "anime",
+      "type": "series",
       "name": "Featured Anime",
       "extra": []
     },
     {
       "id": "anime-action",
-      "type": "anime",
+      "type": "series",
       "name": "Action & Intensity",
       "extra": []
     },
     {
       "id": "anime-deep",
-      "type": "anime",
+      "type": "series",
       "name": "Deep Intrigue",
       "extra": []
     }
@@ -22,10 +22,17 @@
   "metas": [
     {
       "id": "kai:solo-leveling",
-      "type": "anime",
+      "type": "series",
       "name": "Solo Leveling",
-      "genres": ["Action", "Fantasy", "Adventure"],
-      "catalogIds": ["anime-featured", "anime-action"],
+      "genres": [
+        "Action",
+        "Fantasy",
+        "Adventure"
+      ],
+      "catalogIds": [
+        "anime-featured",
+        "anime-action"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/1801/142430.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/1801/142430l.jpg",
       "logo": null,
@@ -59,10 +66,18 @@
     },
     {
       "id": "kai:attack-on-titan",
-      "type": "anime",
+      "type": "series",
       "name": "Attack on Titan",
-      "genres": ["Action", "Drama", "Suspense"],
-      "catalogIds": ["anime-featured", "anime-action", "anime-deep"],
+      "genres": [
+        "Action",
+        "Drama",
+        "Suspense"
+      ],
+      "catalogIds": [
+        "anime-featured",
+        "anime-action",
+        "anime-deep"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
       "logo": null,
@@ -96,10 +111,16 @@
     },
     {
       "id": "kai:demon-slayer",
-      "type": "anime",
+      "type": "series",
       "name": "Demon Slayer: Kimetsu no Yaiba",
-      "genres": ["Action", "Supernatural"],
-      "catalogIds": ["anime-featured", "anime-action"],
+      "genres": [
+        "Action",
+        "Supernatural"
+      ],
+      "catalogIds": [
+        "anime-featured",
+        "anime-action"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
       "description": "A boy joins the Demon Slayer Corps after his family is slaughtered and his sister turned into a demon.",
@@ -122,10 +143,17 @@
     },
     {
       "id": "kai:death-note",
-      "type": "anime",
+      "type": "series",
       "name": "Death Note",
-      "genres": ["Mystery", "Psychological", "Supernatural"],
-      "catalogIds": ["anime-featured", "anime-deep"],
+      "genres": [
+        "Mystery",
+        "Psychological",
+        "Supernatural"
+      ],
+      "catalogIds": [
+        "anime-featured",
+        "anime-deep"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/9/9453.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
       "description": "A brilliant student finds a notebook that kills anyone whose name is written in it—and an equally brilliant detective hunts him.",
@@ -148,10 +176,17 @@
     },
     {
       "id": "kai:cyberpunk-edgerunners",
-      "type": "anime",
+      "type": "series",
       "name": "Cyberpunk: Edgerunners",
-      "genres": ["Action", "Sci-Fi", "Drama"],
-      "catalogIds": ["anime-action", "anime-deep"],
+      "genres": [
+        "Action",
+        "Sci-Fi",
+        "Drama"
+      ],
+      "catalogIds": [
+        "anime-action",
+        "anime-deep"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/1812/127397.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/1812/127397l.jpg",
       "description": "In Night City, a street kid becomes an edgerunner chasing fame, chrome, and the edge of humanity.",
@@ -174,10 +209,16 @@
     },
     {
       "id": "kai:jujutsu-kaisen",
-      "type": "anime",
+      "type": "series",
       "name": "Jujutsu Kaisen",
-      "genres": ["Action", "Supernatural"],
-      "catalogIds": ["anime-featured", "anime-action"],
+      "genres": [
+        "Action",
+        "Supernatural"
+      ],
+      "catalogIds": [
+        "anime-featured",
+        "anime-action"
+      ],
       "poster": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
       "background": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
       "description": "Yuji Itadori swallows a cursed object and enters the brutal world of jujutsu sorcerers.",

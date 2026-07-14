@@ -1,0 +1,13 @@
+{
+  "comment": "Installer dans Stremio-Kai → Addons. MediaProvider DOIT tourner sur :8765 (install-desktop.bat).",
+  "addons": [
+    {
+      "transportUrl": "http://127.0.0.1:8765/manifest.json",
+      "transportName": "http",
+      "flags": {
+        "official": false,
+        "protected": true
+      }
+    }
+  ]
+}
