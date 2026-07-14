@@ -49,13 +49,20 @@ export function buildPlayerHandoffEnvelope(handoff) {
       // magnet: directly to mpv loadfile (same constraint as stock Stremio-Kai).
       loadfile: kind === "http" || kind === "file" ? uri : null,
       keepOpen: true,
+      // EngineFS progressive URL template used by player-handoff-bridge.js
+      // (port may be 11470–11474). fileIdx -1 = server-guessed video file.
+      streamingServerTemplate:
+        kind === "magnet" || kind === "torrent"
+          ? "http://127.0.0.1:{port}/{infoHash}/{fileIdx}"
+          : null,
       scriptMessages: [
         {
           target: "profile_manager",
           name: "anime-metadata",
           payload: {
             is_anime: playbackHints?.is_anime !== false,
-            detection_reason: playbackHints?.detection_reason || "kai-media-provider",
+            detection_reason:
+              playbackHints?.detection_reason || "kai-media-provider",
             imdb_id: contentId,
             content_type: "series",
           },

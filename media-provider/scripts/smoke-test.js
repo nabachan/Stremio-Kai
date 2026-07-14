@@ -55,6 +55,10 @@ async function main() {
   assert.ok(handoff.stream.infoHash);
   assert.equal(handoff.playbackHints.is_anime, true);
   assert.equal(handoff.mpv.loadfile, null, "magnets must not go straight to loadfile");
+  assert.ok(
+    handoff.mpv.streamingServerTemplate?.includes("{infoHash}"),
+    "expected EngineFS URL template for Phase 3",
+  );
   assert.ok(handoff.mpv.scriptMessages?.[0]?.target === "profile_manager");
 
   // Contract helper

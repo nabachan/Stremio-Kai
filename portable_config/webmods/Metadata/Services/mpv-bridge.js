@@ -242,6 +242,21 @@
   }
 
   function waitForMetadata(imdbId, contentType, retryCount = 0) {
+    // Phase 3: kai:* ids come from MediaProvider — seed profile from last handoff
+    if (imdbId && String(imdbId).startsWith("kai:")) {
+      const handoff = window.KaiPlayerHandoff?.last;
+      const hints = handoff?.playbackHints || {};
+      sendAnimeMetadata(
+        imdbId,
+        {
+          isAnime: hints.is_anime !== false,
+          animeReason: hints.detection_reason || "kai-media-provider",
+        },
+        contentType || "series",
+      );
+      return;
+    }
+
     if (window.metadataHelper?.getTitle) {
       window.metadataHelper
         .getTitle(imdbId)
