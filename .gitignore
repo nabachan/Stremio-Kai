@@ -1,0 +1,6 @@
+.kai-stremio-path.txt
+**/node_modules/
+*.log
+.DS_Store
+.env
+.env.*

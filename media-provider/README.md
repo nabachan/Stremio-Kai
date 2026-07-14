@@ -1,0 +1,101 @@
+# Kai Media Provider (Phase 1)
+
+Standalone backend that **replaces Stremio login + remote addons** for catalog / meta / stream resolution.
+
+The MPV / SVP / Anime4K stack in `portable_config/` is **untouched**. This layer only supplies JSON catalogs and magnet streams, plus a player-handoff envelope that Phase 3 will wire into the existing transport.
+
+## One-click run
+
+### Windows (recommandé)
+
+1. Clone / ouvre le dépôt **Stremio-Kai** (pas `C:\Users\iland`)
+2. Checkout la branche Phase 1
+3. Double-clique `start-media-provider.bat` à la **racine du repo**
+
+```bat
+git clone https://github.com/nabachan/Stremio-Kai.git
+cd Stremio-Kai
+git fetch origin
+git checkout cursor/media-provider-manager-2868
+start-media-provider.bat
+```
+
+Ou depuis un `cmd` déjà dans le repo :
+
+```bat
+cd media-provider
+scripts\start.bat
+```
+
+> `./scripts/start.sh` est pour Linux/macOS — **ne marche pas** sous cmd.exe Windows.
+
+### Linux / macOS
+
+```bash
+cd media-provider
+./scripts/start.sh
+```
+
+Server listens on `http://127.0.0.1:8765`.
+
+## Smoke test (no network scrapers needed)
+
+```bat
+REM Windows — depuis la racine du repo
+cd media-provider
+test.bat
+```
+
+```bash
+# Linux / macOS
+cd media-provider
+npm install
+npm test
+```
+
+## API
+
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /manifest.json` | Local “addon” manifest (anime only) |
+| `GET /catalog/anime/anime-featured.json` | Featured grid (Solo Leveling, AoT, …) |
+| `GET /meta/anime/kai:solo-leveling.json` | Full meta + episodes |
+| `GET /stream/anime/kai:solo-leveling.json` | Aggregated magnet streams |
+| `GET /stream/anime/kai:solo-leveling:1:1.json` | Episode-scoped streams |
+| `GET /play/kai:solo-leveling` | Player handoff envelope (magnet → shell contract) |
+| `GET /health` | Provider health |
+
+## Providers
+
+| ID | Default | Notes |
+|----|---------|-------|
+| `fake` | **on** (required) | Deterministic public-domain open-movie magnets for bridge tests |
+| `nyaa` | off | Nyaa.si RSS (`c=1_2`) |
+| `piratebay` | off | apibay.org JSON |
+| `ygg` | off | Requires `MEDIA_YGG_PROXY_URL` (no embedded scraper) |
+
+```bash
+MEDIA_PROVIDERS=fake,nyaa,piratebay npm start
+```
+
+## Player handoff contract
+
+`GET /play/:contentId` returns:
+
+- `kind`: `magnet` | `http` | `file` | `torrent`
+- `uri`: raw URI for the torrent engine (magnets are **not** passed to `mpv loadfile` — same as stock Stremio-Kai)
+- `stream`: Stremio-compatible `{ infoHash, sources, fileIdx, … }`
+- `mpv.scriptMessages`: same `profile_manager` / `anime-metadata` shape used by `mpv-bridge.js`
+
+Fake streams use **Big Buck Bunny / Sintel / Tears of Steel** magnets so you can validate the bridge with legal open movies while catalog posters show intense anime titles for UI calibration.
+
+## Phase 3 player wiring
+
+`portable_config/webmods/Utilities/player-handoff-bridge.js` listens for catalog Play and:
+
+1. Reuses Stremio stream shape `{ infoHash, sources, fileIdx }`
+2. `POST http://127.0.0.1:11470/{infoHash}/create` (EngineFS — same as stock Kai)
+3. `mpv-command` / `loadfile` on the progressive HTTP URL via WebView transport
+4. Sends `anime-metadata` to `profile_manager` — **SVP / Anime4K Lua untouched**
+
+One-click: `start-kai.bat` (MediaProvider + preview + stremio.exe if found).
