@@ -1,0 +1,486 @@
+/**
+ * Kai Anime Catalog — Phase 2
+ * Cinematic anime-only home. Ember accent on deep ink (not purple / cream / broadsheet).
+ */
+
+:root {
+  --kai-cat-ink: #07090d;
+  --kai-cat-ink-2: #10141c;
+  --kai-cat-ember: #ff4d2e;
+  --kai-cat-ember-soft: color-mix(in srgb, #ff4d2e 55%, transparent);
+  --kai-cat-mist: rgba(245, 240, 235, 0.78);
+  --kai-cat-paper: #f3ece4;
+  --kai-cat-stroke: rgba(255, 255, 255, 0.1);
+}
+
+/* ——— Hide native board + legacy hero while anime home is mounted ——— */
+body.kai-anime-home .board-container-DTN_b,
+body.kai-anime-home .board-content-nPWv1,
+body.kai-anime-home .hero-container {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+body.kai-anime-home .nav-content-container-zl9hQ {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  background:
+    radial-gradient(1200px 500px at 20% -10%, rgba(255, 77, 46, 0.18), transparent 55%),
+    radial-gradient(900px 400px at 90% 0%, rgba(40, 90, 160, 0.12), transparent 50%),
+    linear-gradient(180deg, var(--kai-cat-ink) 0%, var(--kai-cat-ink-2) 100%) !important;
+}
+
+/* Hide Addons + Calendar tabs — anime-only surface */
+body.kai-anime-home a.nav-tab-button-tW6qT[href="#/addons"],
+body.kai-anime-home a[href="#/addons"],
+a.nav-tab-button-tW6qT[href="#/addons"],
+a[href="#/addons"] {
+  display: none !important;
+}
+
+body.kai-anime-home a.nav-tab-button-tW6qT[href="#/calendar"],
+body.kai-anime-home a[href="#/calendar"] {
+  display: none !important;
+}
+
+/* ——— Shell ——— */
+.kai-anime-catalog {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: calc(100vh - var(--horizontal-nav-bar-size, 4rem));
+  color: var(--kai-cat-paper);
+  font-family: "Montserrat", sans-serif;
+  padding: 0 0 3rem;
+  animation: kai-cat-fade-in 480ms ease-out both;
+}
+
+@keyframes kai-cat-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kai-cat-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ——— Hero: brand + one title + lede + CTA over full-bleed art ——— */
+.kai-cat-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(52vh, 520px);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.kai-cat-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 20%;
+  background-color: #12151c;
+  transform: scale(1.04);
+  animation: kai-cat-kenburns 18s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes kai-cat-kenburns {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); }
+}
+
+.kai-cat-hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(7, 9, 13, 0.92) 8%, rgba(7, 9, 13, 0.55) 48%, rgba(7, 9, 13, 0.25) 100%),
+    linear-gradient(0deg, rgba(7, 9, 13, 0.95) 0%, transparent 45%);
+}
+
+.kai-cat-hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 42rem;
+  padding: 2.5rem clamp(1.25rem, 4vw, 3.5rem) 2rem;
+}
+
+.kai-cat-brand {
+  margin: 0 0 0.65rem;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 0.95;
+  color: var(--kai-cat-paper);
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
+}
+
+.kai-cat-headline {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--kai-cat-paper);
+}
+
+.kai-cat-lede {
+  margin: 0 0 1.35rem;
+  max-width: 34rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--kai-cat-mist);
+  text-wrap: balance;
+}
+
+.kai-cat-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.kai-cat-btn {
+  appearance: none;
+  border: 1px solid var(--kai-cat-stroke);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--kai-cat-paper);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.15rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.kai-cat-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.kai-cat-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.kai-cat-btn-primary {
+  background: var(--kai-cat-ember);
+  border-color: transparent;
+  color: #140805;
+}
+
+.kai-cat-btn-primary:hover {
+  background: color-mix(in srgb, var(--kai-cat-ember) 88%, white);
+}
+
+.kai-cat-btn-ghost {
+  backdrop-filter: blur(8px);
+}
+
+/* ——— Toolbar ——— */
+.kai-cat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem clamp(1.25rem, 4vw, 3.5rem) 0.4rem;
+}
+
+.kai-cat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.kai-cat-tab {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--kai-cat-mist);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.kai-cat-tab:hover {
+  color: var(--kai-cat-paper);
+}
+
+.kai-cat-tab.is-active {
+  color: var(--kai-cat-ember);
+  border-bottom-color: var(--kai-cat-ember);
+}
+
+.kai-cat-search input {
+  width: min(280px, 70vw);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--kai-cat-stroke);
+  color: var(--kai-cat-paper);
+  font: inherit;
+  padding: 0.65rem 0.85rem;
+  border-radius: 2px;
+  outline: none;
+}
+
+.kai-cat-search input:focus {
+  border-color: var(--kai-cat-ember-soft);
+}
+
+.kai-cat-search input::placeholder {
+  color: rgba(245, 240, 235, 0.4);
+}
+
+/* ——— Grid ——— */
+.kai-cat-grid-wrap {
+  padding: 0.5rem clamp(1rem, 3.2vw, 3rem) 2rem;
+}
+
+.kai-cat-status {
+  padding: 2rem 0.5rem;
+  color: var(--kai-cat-mist);
+  font-size: 0.95rem;
+}
+
+.kai-cat-status.is-error {
+  color: #ff8d7a;
+}
+
+.kai-cat-grid.meta-items-container-n8vNz {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 1.1rem 0.85rem;
+  padding: 0.75rem 0 2rem !important;
+  width: 100%;
+}
+
+@media (min-width: 1100px) {
+  .kai-cat-grid.meta-items-container-n8vNz {
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  }
+}
+
+.kai-cat-poster {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  animation: kai-cat-poster-in 520ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: var(--kai-stagger, 0ms);
+  cursor: pointer;
+}
+
+@keyframes kai-cat-poster-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.kai-cat-poster .poster-container-qkw48 {
+  margin: 0 auto !important;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.kai-cat-poster:hover .poster-container-qkw48,
+.kai-cat-poster:focus-visible .poster-container-qkw48 {
+  transform: translateY(-6px) scale(1.03);
+  border-color: color-mix(in srgb, var(--kai-cat-ember) 70%, white);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--kai-cat-ember-soft);
+}
+
+.kai-cat-poster .poster-image-NiV7O {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background: #151922;
+}
+
+.kai-cat-poster-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0.15rem 0;
+}
+
+.kai-cat-poster-title {
+  font-size: 0.82rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: var(--kai-cat-paper);
+}
+
+.kai-cat-poster-sub {
+  font-size: 0.72rem;
+  color: var(--kai-cat-mist);
+}
+
+/* ——— Detail overlay ——— */
+.kai-cat-detail {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.kai-cat-detail[hidden] {
+  display: none !important;
+}
+
+.kai-cat-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 5, 8, 0.72);
+  backdrop-filter: blur(10px);
+  animation: kai-cat-fade-in 220ms ease both;
+}
+
+.kai-cat-detail-card {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  max-height: min(88vh, 820px);
+  overflow: auto;
+  background:
+    linear-gradient(160deg, rgba(22, 26, 34, 0.96), rgba(10, 12, 16, 0.98));
+  border: 1px solid var(--kai-cat-stroke);
+  border-radius: 4px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  padding: 1.25rem;
+  animation: kai-cat-fade-in 280ms ease both;
+}
+
+.kai-cat-detail-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.7rem;
+  border: 0;
+  background: transparent;
+  color: var(--kai-cat-paper);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.kai-cat-detail-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 720px) {
+  .kai-cat-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .kai-cat-detail-poster {
+    max-width: 200px;
+  }
+}
+
+.kai-cat-detail-poster {
+  width: 100%;
+  border-radius: 3px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #151922;
+}
+
+.kai-cat-detail-body h2 {
+  margin: 0.15rem 0 0.45rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+}
+
+.kai-cat-detail-meta {
+  color: var(--kai-cat-mist);
+  font-size: 0.85rem;
+  margin: 0 0 0.85rem;
+}
+
+.kai-cat-detail-desc {
+  margin: 0 0 1rem;
+  line-height: 1.55;
+  color: rgba(243, 236, 228, 0.9);
+}
+
+.kai-cat-episodes {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  color: var(--kai-cat-mist);
+  font-size: 0.86rem;
+}
+
+.kai-cat-streams-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kai-cat-ember);
+}
+
+.kai-cat-streams {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.kai-cat-stream {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--kai-cat-stroke);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.kai-cat-stream span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--kai-cat-mist);
+  margin-top: 0.2rem;
+}
+
+.kai-cat-handoff {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #05070b;
+  border: 1px solid var(--kai-cat-stroke);
+  color: #b8f0c2;
+  font-size: 0.72rem;
+  overflow: auto;
+  max-height: 180px;
+}
+
+.kai-cat-detail-loading,
+.kai-cat-detail .is-error {
+  padding: 2rem;
+}
