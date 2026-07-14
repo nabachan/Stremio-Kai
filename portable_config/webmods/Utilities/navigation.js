@@ -948,12 +948,12 @@
       const COOLDOWN = 140; // milliseconds to prevent hyper-scrolling when holding Axis down
 
       // Static page list — declared once here, not inside the rAF loop
+      // Phase 1: Addons route removed — streams come from MediaProviderManager
       const PAGES = [
         "#/",
         "#/discover",
         "#/library",
         "#/calendar",
-        "#/addons",
         "#/settings",
       ];
 
@@ -1163,8 +1163,8 @@
               if (currentHash.startsWith("#/discover")) currentIndex = 1;
               else if (currentHash.startsWith("#/library")) currentIndex = 2;
               else if (currentHash.startsWith("#/calendar")) currentIndex = 3;
-              else if (currentHash.startsWith("#/addons")) currentIndex = 4;
-              else if (currentHash.startsWith("#/settings")) currentIndex = 5;
+              else if (currentHash.startsWith("#/settings")) currentIndex = 4;
+              // #/addons intentionally ignored (Phase 1 — MediaProviderManager)
               else currentIndex = 0; // Board fallback
             }
 

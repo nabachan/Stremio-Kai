@@ -1,0 +1,234 @@
+{
+  "catalogs": [
+    {
+      "id": "anime-featured",
+      "type": "anime",
+      "name": "Featured Anime",
+      "extra": []
+    },
+    {
+      "id": "anime-action",
+      "type": "anime",
+      "name": "Action & Intensity",
+      "extra": []
+    },
+    {
+      "id": "anime-deep",
+      "type": "anime",
+      "name": "Deep Intrigue",
+      "extra": []
+    }
+  ],
+  "metas": [
+    {
+      "id": "kai:solo-leveling",
+      "type": "anime",
+      "name": "Solo Leveling",
+      "genres": ["Action", "Fantasy", "Adventure"],
+      "catalogIds": ["anime-featured", "anime-action"],
+      "poster": "https://cdn.myanimelist.net/images/anime/1801/142430.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/1801/142430l.jpg",
+      "logo": null,
+      "description": "In a world where hunters battle deadly monsters, the weakest hunter of mankind awakens a singular power that lets him level up without limit.",
+      "releaseInfo": "2024",
+      "runtime": "24 min",
+      "imdbRating": "8.6",
+      "year": 2024,
+      "status": "continuing",
+      "season": 2,
+      "episodes": [
+        {
+          "id": "kai:solo-leveling:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "I'm Used to It",
+          "overview": "Sung Jinwoo barely survives a double dungeon when a mysterious system appears.",
+          "released": "2024-01-07",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/1801/142430.jpg"
+        },
+        {
+          "id": "kai:solo-leveling:1:2",
+          "season": 1,
+          "episode": 2,
+          "title": "If I Had Been a Little Stronger",
+          "overview": "Jinwoo begins to understand the System and its quests.",
+          "released": "2024-01-14",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/1801/142430.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kai:attack-on-titan",
+      "type": "anime",
+      "name": "Attack on Titan",
+      "genres": ["Action", "Drama", "Suspense"],
+      "catalogIds": ["anime-featured", "anime-action", "anime-deep"],
+      "poster": "https://cdn.myanimelist.net/images/anime/10/47347.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+      "logo": null,
+      "description": "Humanity fights for survival behind towering walls as Titans threaten extinction—and the truth behind the walls grows darker.",
+      "releaseInfo": "2013–2023",
+      "runtime": "24 min",
+      "imdbRating": "9.1",
+      "year": 2013,
+      "status": "ended",
+      "season": 4,
+      "episodes": [
+        {
+          "id": "kai:attack-on-titan:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "To You, in 2000 Years",
+          "overview": "Eren, Mikasa and Armin face a colossal Titan that shatters their world.",
+          "released": "2013-04-07",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/10/47347.jpg"
+        },
+        {
+          "id": "kai:attack-on-titan:1:2",
+          "season": 1,
+          "episode": 2,
+          "title": "That Day",
+          "overview": "Survivors reckon with the fall of Wall Maria.",
+          "released": "2013-04-14",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/10/47347.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kai:demon-slayer",
+      "type": "anime",
+      "name": "Demon Slayer: Kimetsu no Yaiba",
+      "genres": ["Action", "Supernatural"],
+      "catalogIds": ["anime-featured", "anime-action"],
+      "poster": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+      "description": "A boy joins the Demon Slayer Corps after his family is slaughtered and his sister turned into a demon.",
+      "releaseInfo": "2019",
+      "runtime": "24 min",
+      "imdbRating": "8.6",
+      "year": 2019,
+      "status": "continuing",
+      "episodes": [
+        {
+          "id": "kai:demon-slayer:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "Cruelty",
+          "overview": "Tanjiro's life changes forever on a snowy night.",
+          "released": "2019-04-06",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/1286/99889.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kai:death-note",
+      "type": "anime",
+      "name": "Death Note",
+      "genres": ["Mystery", "Psychological", "Supernatural"],
+      "catalogIds": ["anime-featured", "anime-deep"],
+      "poster": "https://cdn.myanimelist.net/images/anime/9/9453.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
+      "description": "A brilliant student finds a notebook that kills anyone whose name is written in it—and an equally brilliant detective hunts him.",
+      "releaseInfo": "2006",
+      "runtime": "23 min",
+      "imdbRating": "8.9",
+      "year": 2006,
+      "status": "ended",
+      "episodes": [
+        {
+          "id": "kai:death-note:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "Rebirth",
+          "overview": "Light Yagami discovers the Death Note.",
+          "released": "2006-10-04",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/9/9453.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kai:cyberpunk-edgerunners",
+      "type": "anime",
+      "name": "Cyberpunk: Edgerunners",
+      "genres": ["Action", "Sci-Fi", "Drama"],
+      "catalogIds": ["anime-action", "anime-deep"],
+      "poster": "https://cdn.myanimelist.net/images/anime/1812/127397.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/1812/127397l.jpg",
+      "description": "In Night City, a street kid becomes an edgerunner chasing fame, chrome, and the edge of humanity.",
+      "releaseInfo": "2022",
+      "runtime": "25 min",
+      "imdbRating": "8.6",
+      "year": 2022,
+      "status": "ended",
+      "episodes": [
+        {
+          "id": "kai:cyberpunk-edgerunners:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "Let You Down",
+          "overview": "David Martinez's world collapses in a single night.",
+          "released": "2022-09-13",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/1812/127397.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kai:jujutsu-kaisen",
+      "type": "anime",
+      "name": "Jujutsu Kaisen",
+      "genres": ["Action", "Supernatural"],
+      "catalogIds": ["anime-featured", "anime-action"],
+      "poster": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
+      "background": "https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
+      "description": "Yuji Itadori swallows a cursed object and enters the brutal world of jujutsu sorcerers.",
+      "releaseInfo": "2020",
+      "runtime": "24 min",
+      "imdbRating": "8.6",
+      "year": 2020,
+      "status": "continuing",
+      "episodes": [
+        {
+          "id": "kai:jujutsu-kaisen:1:1",
+          "season": 1,
+          "episode": 1,
+          "title": "Ryomen Sukuna",
+          "overview": "A high schooler's kindness unleashes a legendary curse.",
+          "released": "2020-10-03",
+          "thumbnail": "https://cdn.myanimelist.net/images/anime/1171/109222.jpg"
+        }
+      ]
+    }
+  ],
+  "testPlayables": {
+    "bigBuckBunny": {
+      "infoHash": "dd8255ecdc7ca55fb0bb67f5467109871d01c917",
+      "name": "Big.Buck.Bunny.2008.OpenMovie.1080p",
+      "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bb67f5467109871d01c917&dn=Big%2BBuck%2BBunny&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "kai-test-bbb",
+        "notWebReady": true
+      }
+    },
+    "sintel": {
+      "infoHash": "08ada5a7a6183aae1e09d831df6748d566095a10",
+      "name": "Sintel.2010.OpenMovie.1080p",
+      "magnet": "magnet:?xt=urn:btih:08ada5a7a6183aae1e09d831df6748d566095a10&dn=Sintel&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "kai-test-sintel",
+        "notWebReady": true
+      }
+    },
+    "tearsOfSteel": {
+      "infoHash": "209c8226b299b308beaf2b9cd3fb49212dbd13ec",
+      "name": "Tears.of.Steel.2012.OpenMovie.1080p",
+      "magnet": "magnet:?xt=urn:btih:209c8226b299b308beaf2b9cd3fb49212dbd13ec&dn=Tears%20of%20Steel&tr=udp%3A%2F%2Fexplodie.org%3A6969",
+      "fileIdx": 0,
+      "behaviorHints": {
+        "bingeGroup": "kai-test-tos",
+        "notWebReady": true
+      }
+    }
+  }
+}
