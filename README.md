@@ -22,15 +22,24 @@ Note le dossier qui contient `stremio.exe` (ex. `C:\Stremio-Kai`).
 
 ### 2. Applique cette mod
 ```bat
-git clone https://github.com/nabachan/Stremio-Kai.git
-cd Stremio-Kai
+cd C:\Users\iland\Stremio-Kai
+git pull
 git checkout cursor/kai-desktop-sources-2868
 install-desktop.bat
 ```
 
+Si `stremio.exe` n’est pas trouvé, **indique le chemin** :
+```bat
+find-stremio.bat
+install-desktop.bat "D:\chemin\vers\stremio.exe"
+```
+
+> `C:\Stremio-Kai\stremio.exe` n’existe que si tu as extrait Kai **exactement** là.  
+> Sinon télécharge : https://github.com/allecsc/Stremio-Kai/releases/latest
+
 Le script :
 1. démarre MediaProvider (`:8765`)
-2. copie `portable_config` vers ton install Kai (si trouvé)
+2. copie `portable_config` vers ton install Kai
 3. lance `stremio.exe`
 
 ### 3. Une seule source dans Kai
