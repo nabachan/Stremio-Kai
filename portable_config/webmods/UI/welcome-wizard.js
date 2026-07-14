@@ -19,7 +19,8 @@
     FLAG_KEY: "stremio-kai-welcomed",
     LOGO_URL:
       "https://github.com/user-attachments/assets/5a43dbc5-8c78-49f9-bced-a428eed1b6f8",
-    LOGIN_URL: "#/intro?form=login",
+    // Phase 1: standalone Kai — no Stremio account / cloud login
+    HOME_URL: "#/",
     STORAGE_KEYS: {
       oled: "stremio-oled-theme-enabled",
       fullscreen: "stremio-auto-fullscreen",
@@ -542,14 +543,15 @@
         state.currentStep === 0 ? "hidden" : "visible";
 
       if (state.currentStep === 0) {
-        state.dom.title.textContent = "Welcome to Stremio Kai";
+        state.dom.title.textContent = "Welcome to Kai";
         state.dom.subtitle.textContent =
-          "A refined all-in-one Stremio build for premium viewing.";
+          "Standalone anime desktop player — no Stremio login required.";
         state.dom.btnNext.textContent = "Get Started";
       } else if (state.currentStep === state.totalSteps - 1) {
         state.dom.title.textContent = "Ready to Roll";
-        state.dom.subtitle.textContent = "All set for premium viewing.";
-        state.dom.btnNext.textContent = "Login to Stremio";
+        state.dom.subtitle.textContent =
+          "Catalog powered by Kai Media Provider. No account needed.";
+        state.dom.btnNext.textContent = "Enter Kai";
       } else {
         state.dom.title.textContent = this.getStepTitle(state.currentStep);
         state.dom.subtitle.textContent = this.getStepSubtitle(
@@ -600,12 +602,12 @@
         state.currentStep++;
         this.updateStep();
       } else {
-        window.location.hash = CONFIG.LOGIN_URL;
+        // Phase 1: skip Stremio login — land on local home
+        window.location.hash = CONFIG.HOME_URL;
 
         // Finalize: Clear Caches and Reload if needed
         if (state.heroBannerModified || state.cacheClearNeeded) {
           localStorage.setItem(CONFIG.FLAG_KEY, "true");
-
           // Smart Cache Clearing
           try {
             console.log("[Wizard] Clearing caches for fresh start...");
