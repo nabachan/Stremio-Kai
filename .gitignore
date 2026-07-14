@@ -1,0 +1,12 @@
+# Dependencies / builds
+**/node_modules/
+stremio-web/build/
+stremio-web/node_modules/
+media-provider/node_modules/
+*.log
+.DS_Store
+.env
+.env.*
+
+# Webpack build cache
+.cache/

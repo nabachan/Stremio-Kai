@@ -91,8 +91,11 @@ export class MediaProviderManager {
       description:
         "Standalone anime catalog & magnet streams — no Stremio login, no remote addons.",
       resources: ["catalog", "meta", "stream"],
-      types: ["anime"],
-      catalogs: this.catalogProvider.listCatalogs(),
+      types: ["series"],
+      catalogs: this.catalogProvider.listCatalogs().map((c) => ({
+        ...c,
+        type: "series",
+      })),
       idPrefixes: ["kai:"],
       behaviorHints: {
         adult: false,
